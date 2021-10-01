@@ -75,6 +75,17 @@
 ![image](https://user-images.githubusercontent.com/67065306/135692816-dec80f9c-01c6-46ee-baa3-9df85fed5f8b.png)
 
 
+Note: If in the Project-7 we mounted /var/log/httpd/ from our Web Servers to the NFS server – we will unmount them & make sure that each Web Server has its own log directory.
+
+We will open two ssh/Putty consoles for both Web Servers and run following command:
+
+    sudo tail -f /var/log/httpd/access_log
+  
+We will refresh our browser page http://<Load-Balancer-Public-IP-Address-or-Public-DNS-Name>/index.php several times and make sure that both servers receive HTTP GET requests from our LB – new records must appear in each server’s log file. The number of requests to each server will be approximately the same since we set loadfactor to the same value for both servers – it means that traffic will be disctributed evenly between them.
+
+If you have configured everything correctly – our users will not even notice that their requests are served by more than one server.
+  
+![image](https://user-images.githubusercontent.com/67065306/135694502-366b487a-6ee8-49e9-9f07-ae9e7b1cdc4c.png)
 
 
 
