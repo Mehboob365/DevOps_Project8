@@ -43,3 +43,54 @@
 
 ![image](https://user-images.githubusercontent.com/67065306/135691704-f4a8fb3a-90ca-489c-9bc8-7371c2fcce9a.png)
 
+#Configure load balancing
+
+    sudo vi /etc/apache2/sites-available/000-default.conf
+
+#Add this configuration into this section <VirtualHost *:80>  </VirtualHost>
+
+<Proxy "balancer://mycluster">
+               BalancerMember http://<WebServer1-Private-IP-Address>:80 loadfactor=5 timeout=1
+               BalancerMember http://<WebServer2-Private-IP-Address>:80 loadfactor=5 timeout=1
+               ProxySet lbmethod=bytraffic
+               # ProxySet lbmethod=byrequests
+        </Proxy>
+
+        ProxyPreserveHost On
+        ProxyPass / balancer://mycluster/
+        ProxyPassReverse / balancer://mycluster/
+  
+![image](https://user-images.githubusercontent.com/67065306/135692456-9c8f121f-c9e4-4414-9da2-c1a160cf0e3a.png)
+
+#Restart apache server
+
+   sudo systemctl restart apache2
+  
+4. We can verify that our configuration works – we try to access our LB’s public IP address or Public DNS name from our browser:
+  
+     http://<Load-Balancer-Public-IP-Address-or-Public-DNS-Name>/index.php
+  
+     http://3.250.111.211/index.php
+
+![image](https://user-images.githubusercontent.com/67065306/135692816-dec80f9c-01c6-46ee-baa3-9df85fed5f8b.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
