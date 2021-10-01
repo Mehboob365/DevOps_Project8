@@ -12,20 +12,34 @@
 
 #Install apache2
 
-sudo apt update
+    sudo apt update
 
-sudo apt install apache2 -y
+    sudo apt install apache2 -y
 
-sudo apt-get install libxml2-dev
+    sudo apt-get install libxml2-dev
 
 
 #Enable following modules:
-sudo a2enmod rewrite
-sudo a2enmod proxy
-sudo a2enmod proxy_balancer
-sudo a2enmod proxy_http
-sudo a2enmod headers
-sudo a2enmod lbmethod_bytraffic
+
+    sudo a2enmod rewrite
+
+    sudo a2enmod proxy
+
+    sudo a2enmod proxy_balancer
+  
+    sudo a2enmod proxy_http
+  
+    sudo a2enmod headers
+  
+    sudo a2enmod lbmethod_bytraffic
 
 #Restart apache2 service
-sudo systemctl restart apache2
+
+    sudo systemctl restart apache2
+    
+#Make sure apache2 is up and running
+
+     sudo systemctl status apache2
+
+![image](https://user-images.githubusercontent.com/67065306/135691704-f4a8fb3a-90ca-489c-9bc8-7371c2fcce9a.png)
+
