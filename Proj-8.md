@@ -8,4 +8,24 @@
 
   ![image](https://user-images.githubusercontent.com/67065306/135689301-0d1c6871-1ebc-4974-a1b0-0ea4d5f05fd2.png)
   
-3. 
+3. Will Install Apache Load Balancer on Project-8-apache-lb server and configure it to point traffic coming to LB to both Web Servers:
+
+#Install apache2
+
+sudo apt update
+
+sudo apt install apache2 -y
+
+sudo apt-get install libxml2-dev
+
+
+#Enable following modules:
+sudo a2enmod rewrite
+sudo a2enmod proxy
+sudo a2enmod proxy_balancer
+sudo a2enmod proxy_http
+sudo a2enmod headers
+sudo a2enmod lbmethod_bytraffic
+
+#Restart apache2 service
+sudo systemctl restart apache2
