@@ -87,12 +87,27 @@ If you have configured everything correctly – our users will not even notice t
   
 ![image](https://user-images.githubusercontent.com/67065306/135694502-366b487a-6ee8-49e9-9f07-ae9e7b1cdc4c.png)
 
+**#Configure Local DNS Names Resolution**
 
+Sometimes it is tedious to remember and switch between IP addresses, especially if we have a lot of servers under our management.
+What we can do, is to configure local domain name resolution. The easiest way is to use /etc/hosts file, although this approach is not very scalable, but it is very easy to configure and shows the concept well. So let us configure IP address to domain name mapping for our LB.
 
+# We open this file on our LB server
 
+sudo vi /etc/hosts
 
+#We add 2 records into this file with Local IP address and arbitrary name for both of our Web Servers
 
+<WebServer1-Private-IP-Address> Web1
+<WebServer2-Private-IP-Address> Web2
 
+Now we can update our LB config file with those names instead of IP addresses.
+
+   BalancerMember http://Web1:80 loadfactor=5 timeout=1
+  
+   BalancerMember http://Web2:80 loadfactor=5 timeout=1
+
+![image](https://user-images.githubusercontent.com/67065306/135694940-338b8429-46d5-4b2d-ad81-67f0d05393f0.png)
 
 
 
