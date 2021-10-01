@@ -110,8 +110,9 @@ Now we can update our LB config file with those names instead of IP addresses.
 ![image](https://user-images.githubusercontent.com/67065306/135694940-338b8429-46d5-4b2d-ad81-67f0d05393f0.png)
 
 
+ We  can try to curl our Web Servers from LB locally curl http://Web1 or curl http://Web2 – it shall work.
 
-
+![image](https://user-images.githubusercontent.com/67065306/135695236-2568fbda-502c-4fff-af0f-eaf325befaa2.png)
 
 
 
